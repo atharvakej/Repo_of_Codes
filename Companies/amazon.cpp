@@ -7,6 +7,7 @@ using namespace std;
 #define MP make_pair
 #define pb     push_back
 #define ppb    pop_back
+
 int power(int a, int b){
 int r=1; 
 while(b){
