@@ -28,18 +28,22 @@ typedef vector<ll> Vi;
 #define int long long
 int32_t main(){
 IOS;
-    int n,m;
-    cin>>n>>m;
-    vector<int> adj[n+1];
-    for(int i=0;i<m;i++){
-        int u,v;
-        cin>>u>>v;
-        adj[u].push_back(v);
-        adj[v].push_back(u);
+int t=1;
+cin>>t;
+while(t--){
+    int n,x;
+    cin>>n>>x;
+    vector<int> arr(n);
+    fori(0,n)cin>>arr[i];
+
+    int sum = 0;
+    int maxi = 0 ;
+    for(int i=0;i<n;i++){
+        sum += arr[i];
+        maxi = max(arr[i],maxi);
     }
-
-    set<pair<int,int>> st;
-    st.insert({0,1});
-
+    cout<<max(((sum+x-1)/x),maxi)<<endl;
+    
+}
     return 0;
 }

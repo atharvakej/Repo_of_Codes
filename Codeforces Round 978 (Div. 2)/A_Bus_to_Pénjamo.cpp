@@ -28,18 +28,38 @@ typedef vector<ll> Vi;
 #define int long long
 int32_t main(){
 IOS;
-    int n,m;
-    cin>>n>>m;
-    vector<int> adj[n+1];
-    for(int i=0;i<m;i++){
-        int u,v;
-        cin>>u>>v;
-        adj[u].push_back(v);
-        adj[v].push_back(u);
+int t=1;
+cin>>t;
+while(t--){
+    int n,r;
+    cin>>n>>r;
+    vector<int> arr(n);
+    fori(0,n)cin>>arr[i];
+
+    int happies = 0;
+    int rem = 0;
+    for(int i=0;i<n;i++){
+
+        happies += (arr[i]/2)*2;
+        arr[i] = arr[i]%2;
+        if(arr[i]==1)rem++;
+    }
+    int remrows = r - (happies/2);
+    for(int i=1;i<=remrows && rem ;i++){
+        happies++;
+        rem--;
+    }
+    while(rem>0){
+        happies--;
+        rem--;
     }
 
-    set<pair<int,int>> st;
-    st.insert({0,1});
+    cout<<happies<<endl;
 
+
+    
+    
+    
+}
     return 0;
 }

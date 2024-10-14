@@ -26,20 +26,34 @@ typedef vector<ll> Vi;
 #define sorta(x) sort(x.begin(),x.end())
 #define fora(x) for(auto it : x)
 #define int long long
+
+int ask(int i, int j){
+    cout<<"? "<<i<<" "<<j<<endl;
+    int r;
+    cin>>r;
+    return r;
+}
+
 int32_t main(){
 IOS;
-    int n,m;
-    cin>>n>>m;
-    vector<int> adj[n+1];
-    for(int i=0;i<m;i++){
-        int u,v;
-        cin>>u>>v;
-        adj[u].push_back(v);
-        adj[v].push_back(u);
+int t=1;
+cin>>t;
+while(t--){
+    int n;
+    cin>>n;
+    int ans = -1;
+    for(int i=1;i<=n-1;i+=2){
+        if(ask(i,i+1)!=ask(i+1,i)){
+            int j = i>1 ? 1:i+2;
+            if(ask(i,j)!=ask(j,i)){
+                ans = i;
+            }
+            else ans = i+1;
+            break;
+        }
     }
-
-    set<pair<int,int>> st;
-    st.insert({0,1});
-
+    if(ans==-1)ans = n;
+    cout<<"! "<<ans<<endl;
+}
     return 0;
 }
