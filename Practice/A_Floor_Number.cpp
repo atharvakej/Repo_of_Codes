@@ -28,12 +28,14 @@ typedef vector<ll> Vi;
 #define int long long
 int32_t main(){
 IOS;
-    int n;
-    cin>>n;
-    vector<int> arr(n);
-    for(int i=0;i<n;i++){
-        cin>>arr[i];
-    }
+int t=1;
+cin>>t;
+while(t--){
+    int n,x;
+    cin>>n>>x;
+    cout<<max(0LL,((n-2+x-1)/x))+1<<endl;
     
+    
+}
     return 0;
 }
