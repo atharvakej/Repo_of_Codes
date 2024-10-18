@@ -26,41 +26,45 @@ typedef vector<ll> Vi;
 #define sorta(x) sort(x.begin(),x.end())
 #define fora(x) for(auto it : x)
 #define int long long
+
+bool check(int k, vector<int> &arr, int h){
+    int n = arr.size();
+    for(int i=0;i<n-1;i++){
+        h -= min(k,arr[i+1]-arr[i]);
+    }
+    h-=k;
+    if(h<=0)return 1;
+    return 0;
+}
+
+
 int32_t main(){
 IOS;
 int t=1;
 cin>>t;
 while(t--){
-    string s;
-    cin>>s;
-    int n = s.size();
-    if(n%2){
-        map<int,int> mp;
-        int maxi = 0;
-        for(auto it:s){
-            mp[it]++;
-            maxi = max(mp[it],maxi);
-        }
-        cout<<n-maxi-1<<endl;
-    }
-    else{
-        map<int,int> odd;
-        map<int,int> even;
-        int evemax = 0;
-        int oddmax = 0;
-        for(int i=0;i<n;i++){
-            if(i%2){
-                odd[s[i]]++;
-                oddmax = max(oddmax,odd[s[i]]);
-            }
-            else{
-                even[s[i]]++;
-                evemax= max(evemax,even[s[i]]);
-            }
-        }
-        cout<<n-oddmax-evemax<<endl;
+    int n,h;
+    cin>>n>>h;
+    vector<int> arr(n);
+    fori(0,n)cin>>arr[i];
 
+    int low = 1;
+    int high = 1e18;
+    int ans = 1e18 ;
+    while(low<=high){
+        int mid = low + (high-low)/2;
+
+        if(check(mid,arr,h)){
+            ans = mid;
+            high = mid-1;
+        }
+        else{
+            low = mid+1;
+        }
     }
+    cout<<ans<<endl;
+
+
     
     
 }

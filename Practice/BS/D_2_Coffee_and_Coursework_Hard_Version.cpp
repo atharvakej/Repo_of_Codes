@@ -26,30 +26,55 @@ typedef vector<ll> Vi;
 #define sorta(x) sort(x.begin(),x.end())
 #define fora(x) for(auto it : x)
 #define int long long
+bool check(int mid, vector<int> &arr, int pages){
+    //mid = 2;
+    int i=0;
+    int n = arr.size();
+    int red = 0;
+    int count = 0;
+    while(i<n){
+        int j =i;
+        for(j=i;j<i+mid && j<n;j++){
+            count += max(0LL,(arr[j]-red));
+        }
+        red++;
+        i = j;
+    }
+    //cout<<mid<<" "<<count<<endl;
+    if(count>=pages)return 1;
+    return 0;
+}
+
 int32_t main(){
 IOS;
 int t=1;
-cin>>t;
+//cin>>t;
 while(t--){
-    int n;
-    cin>>n;
+    int n,pages;
+    cin>>n>>pages;
+
     vector<int> arr(n);
-    int odd = 0;
-    int even = 0;
     fori(0,n){
         cin>>arr[i];
-        if(arr[i]%2)odd++;
-        else even++;
     }
-
-    if(odd==0 || (odd%2==0 && even==0)){
-        cout<<"NO"<<endl;
-    }
-    else{
-        cout<<"YES"<<endl;
-    }
+    sort(arr.begin(),arr.end(), greater<int>());
 
 
+    int low = 1;
+    int high = pages;
+    int ans = -1;
+    while(low<=high){
+        int mid = low + (high-low)/2;
+
+        if(check(mid,arr,pages)){
+            ans = mid;
+            high = mid-1;
+        }
+        else
+        low = mid+1;
+
+    }
+    cout<<ans<<endl;
     
     
 }
