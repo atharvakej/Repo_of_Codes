@@ -35,29 +35,18 @@ while(t--){
     cin>>n;
     vector<int> arr(n+1);
     fori(1,n+1)cin>>arr[i];
-    int count = 0;
-    // for(int i=1;i<=n;i++){
-    //     while(!(arr[i]==i)){
-    //         int t = arr[arr[i]];
-    //         arr[arr[i]] = arr[i];
-    //         arr[i] = t;
-    //         count++;
-    //         for(auto it:arr)cout<<it<<" ";
-    //         cout<<endl;
-    //     }
-    // }
-    int count2 = 0;
+    int ans = 0;
+    vector<bool> vis(n+1,0);
     for(int i=1;i<=n;i++){
-        while(!(arr[arr[i]]==i)){
-            int t = arr[arr[arr[i]]];
-            arr[arr[arr[i]]] = arr[arr[i]];
-            arr[arr[i]] = t;
-            count2++;
-            for(auto it:arr)cout<<it<<" ";
-            cout<<endl;
+        if(vis[i])continue;
+        int len = 0;
+        for(int j=i;!vis[j];j=arr[j]){
+            len++;  
+            vis[j] = 1;
         }
+        ans += (len-1)/2;
     }
-    cout<<count2<<endl;
+    cout<<ans<<endl;
     
     
 }

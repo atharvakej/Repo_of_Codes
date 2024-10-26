@@ -30,18 +30,15 @@ typedef vector<ll> Vi;
 int maxbseg(const vector<int>& arr) {
     int n = arr.size();
     map<int, int> mp;  
-    int psum = 0; 
-    int lastEnd = -1;  
+    int psum = 0;   
     int bseg = 0;
-    mp[0] = -1;
+    mp[0] = 0;
     for (int i = 0; i < n; ++i) {
         psum += arr[i];
         if (mp.count(psum)) {
-            int pidx = mp[psum];
-            if (pidx >= lastEnd) {
-                ++bseg;
-                lastEnd = i;  
-            }
+            bseg++;
+            psum = 0;
+            mp.clear();
         }
         mp[psum] = i;
     }

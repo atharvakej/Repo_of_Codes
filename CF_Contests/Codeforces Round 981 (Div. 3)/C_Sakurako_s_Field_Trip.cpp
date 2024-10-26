@@ -40,38 +40,29 @@ while(t--){
     for(int i=0;i<n;i++){
         cin>>arr[i];
     }
-    int count = 0;
-    for(int i=1;i<(n/2)-1;i++){
-        if( (arr[i-1]==arr[i] && arr[i]==arr[i+1])
-         && (arr[n-i+1]!=arr[i] || arr[i]!=arr[n-i+2])){
-            swap(arr[i],arr[n-i+1]);
-            count++;
-        }
-        else if(arr[i-1]==arr[i] &&
-         (arr[n-i+1]!=arr[i] || arr[i]!=arr[n-i+2])){
-            swap(arr[i],arr[n-i+1]);
-            count++;
-         }
-         else if( (arr[n-i]==arr[n-i+1] && arr[n-i+1]==arr[n-i+2])
-         && (arr[i+1]!=arr[i] || arr[i-1]!=arr[n-i+2])){
-            swap(arr[i],arr[n-i+1]);
-            count++;
-        }
-        else if((arr[n-i]==arr[n-i+1])
-         && (arr[i+1]!=arr[i] || arr[i-1]!=arr[n-i+2])){
-            swap(arr[i],arr[n-i+1]);
-            count++;
-         }
-    }
-    int dist = 0;
-    for(int i=1;i<n;i++){
-        if(arr[i]==arr[i+1]){
-            dist++;
-        }
-    }
-    cout<<dist<<endl;
 
-    
+    for(int i=1;i<(n/2);i++){
+        int prevleft = arr[i-1];
+        int nextright = arr[n-i];
+
+        int left = arr[i];
+        int right = arr[n-i-1];
+        //cout<<prevleft<<" "<<nextright<<" "<<left<<" "<<right<<endl;
+        if(left==prevleft || right==nextright){
+            arr[i] = right;
+            arr[n-i-1] = left;
+        }
+    }
+    int count = 0;
+    for(int i=0;i<n-1;i++){
+        if(arr[i]==arr[i+1])count++;
+    }
+    cout<<count<<endl;
+
+    // for(auto it:arr){
+    //     cout<<it<<" ";
+    // }
+    // cout<<endl;
 
     
     
