@@ -33,9 +33,40 @@ cin>>t;
 while(t--){
     string s;
     cin>>s;
+    int n = s.size();
+    unordered_map<int,int> mp;
+    for(int i=0;i<n-3;i++){
+        if(s[i]=='1' && s[i+1]=='1' && s[i+2]=='0' && s[i+3]=='0'){
+            mp[i]++;
+        }
+    }
     int q;
     cin>>q;
-    map<int,vector<int>> mp;
+    while(q--){
+        int idx, val;
+        cin>>idx>>val;
+        idx--;
+        s[idx] = val +'0';
+        for(int i=max(0LL,idx-4);i<min(n,idx+4);i++){
+            
+            if(mp.find(i)!=mp.end()){
+                mp.erase(i);
+            }
+            
+        }
+        for(int i=max(0LL,idx-4);i<min(n,idx+4);i++){
+            
+        if(s[i]=='1' && s[i+1]=='1' && s[i+2]=='0' && s[i+3]=='0'){
+            mp[i]++;
+        }
+            
+        }
+        if(!mp.empty()){
+            cout<<"YES"<<endl;
+        }
+        else
+        cout<<"NO"<<endl;
+    }
     
 
 
