@@ -89,7 +89,7 @@ class ParentTree{
 		}
 		unordered_set<Tree*> st;
 
-        for(auto it:r->lowers){
+        for(auto &it:r->lowers){
             st.insert(it);
         }
 		for(Tree* it: st){
@@ -117,6 +117,16 @@ class ParentTree{
 
 };
 
+bool handler(int pid, ParentTree* tree, string name, int id){
+    if(pid==1){
+        return tree->lock(name,id);
+	}
+    else if(pid==2){
+	    return tree->unlock(name,id);
+	}
+	return tree->upgrade(name,id);
+}
+
 
 int main(){
 	int size,m,tt;
@@ -125,28 +135,17 @@ int main(){
 	for(int i=0;i<size;i++){
 		cin>>a[i];
 	}
-	ParentTree* tree=new ParentTree(a[0]);
+	ParentTree* tree = new ParentTree(a[0]);
 	tree->buildTree(a,m);
 	while(tt--){
-        int type,id;
+        int pid,id;
         string name;
-		cin>>type>>name>>id;
-		if(type==1){
-			if(tree->lock(name,id)){
-				cout<<"true";
-			}
-			else cout<<"false";
-		}
-		else if(type==2){
-			if(tree->unlock(name,id)) cout<<"true";
-			else cout<<"false";
-		}
-		else{
-			if(tree->upgrade(name,id)) {
-				cout<<"true";
-			}
-			else cout<<"false";
-		}
-		cout<<endl;
+		cin>>pid>>name>>id;
+        if(handler(pid,tree,name,id)){
+            cout<<"true"<<endl;
+        }
+        else{
+            cout<<"false"<<endl;
+        }	
 	}
 }
