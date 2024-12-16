@@ -31,22 +31,38 @@ IOS;
 int t=1;
 cin>>t;
 while(t--){
-    int n,m;
-    cin>>n>>m;
-    vector<int> a(n), b(m);
-    fori(0,n)cin>>a[i];
-    fori(0,m)cin>>b[i];
-    sort(a.begin(),a.end(), greater<int>());
-    sort(b.begin(),b.end(), greater<int>());
-    if(m<=n){
-        int sum = 0;
-        for(auto it:b){
-            sum += it;
+    int n;
+    cin>>n;
+    if(n%2==0){
+        int ct =1;
+        for(int i=0;i<n/2;i++){
+            cout<<ct<<" "<<ct<<" ";
+            ct++;
         }
-        cout<<sum<<endl;
+        cout<<endl;
     }
     else{
-        
+        //if(n<26){
+            cout<<-1<<endl;
+        // }
+        // else{
+        //     vector<int> odd= {
+        //     1,2,2,3,3,4,4,5,5,1,
+
+        //     };
+        //     int ct =1;
+        //     for(auto it:odd){
+        //         cout<<it<<" ";
+        //     }
+        //     ct = 5;
+        //     int req = (n-9)/2;
+        //     for(int i=0;i<(req);i++){
+        //         cout<<ct<<" "<<ct<<" ";
+        //         ct++;
+        //     }
+        //     cout<<endl;
+            
+        // }
     }
     
     

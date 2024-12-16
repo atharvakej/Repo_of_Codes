@@ -35,28 +35,41 @@ while(t--){
     cin>>n>>k;
     vector<int> arr(n);
     fori(0,n)cin>>arr[i];
+    sort(arr.begin(),arr.end());
     //cout<<arr[0]<<endl;
     if(k==1){
-        int mini = 1e18+1;  
-        for(int i=0;i<n;i++){
-            for(int j=i+1;j<n;j++){
-                mini = min(abs(arr[i]-arr[j]),mini);
-            }
+        
+        int mini = arr[0];
+        for(int i=1;i<n;i++){
+            //cout<<abs(arr[i]-arr[i-1])<<endl;
+            mini = min(mini,abs(arr[i]-arr[i-1]));
+            mini = min(arr[i],mini);
         }
         cout<<mini<<endl;
     }
     else if(k==2){
-        int mini = 1e18+1;  
+        int  mini = 1e18+7;
         for(int i=0;i<n;i++){
-            for(int j=i+1;j<n;j++){
-                mini = min(abs(arr[i]-arr[j]),mini);
+        mini = min(arr[i],mini);
+           for(int j=i+1;j<n;j++){
+            int diff = abs(arr[i]-arr[j]);
+            mini = min(diff,mini);
+            int closest = upper_bound(arr.begin(), arr.end(), diff) - arr.begin();
+            int closest2 = lower_bound(arr.begin(), arr.end(), diff) - arr.begin();
+            if(closest<n){
+                mini = min(mini,abs(arr[closest]-diff));
             }
-        }
-        arr.push_back(mini);
-        for(int i=0;i<=n;i++){
-            for(int j=i+1;j<=n;j++){
-                mini = min(abs(arr[i]-arr[j]),mini);
+            if(closest>0){
+                mini = min(mini,abs(arr[closest-1]-diff));
             }
+            if(closest2<n){
+                mini = min(mini,abs(arr[closest2]-diff));
+            }
+            if(closest2>0){
+                mini = min(mini,abs(arr[closest2-1]-diff));
+            }
+
+           }
         }
         cout<<mini<<endl;
     }

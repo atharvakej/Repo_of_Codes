@@ -11,9 +11,7 @@ class TreeNode{
 		int locker_id=-1;
 
 	};
-
-
-
+    
 bool lock_node(TreeNode* node, int uid){
 
     if(node->isLocked || !node->isLockable) return false;

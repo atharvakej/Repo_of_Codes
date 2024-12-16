@@ -31,23 +31,19 @@ IOS;
 int t=1;
 cin>>t;
 while(t--){
-    int n,m;
-    cin>>n>>m;
-    vector<int> a(n), b(m);
-    fori(0,n)cin>>a[i];
-    fori(0,m)cin>>b[i];
-    sort(a.begin(),a.end(), greater<int>());
-    sort(b.begin(),b.end(), greater<int>());
-    if(m<=n){
-        int sum = 0;
-        for(auto it:b){
-            sum += it;
-        }
-        cout<<sum<<endl;
+    int n;
+    cin>>n;
+    vector<int> arr(n);
+    fori(0,n)cin>>arr[i];
+    map<int,int> mp;
+    for(int i=0;i<n;i++){
+        mp[arr[i]]++;
     }
-    else{
-        
+    int maxi = 0;
+    for(auto it:mp){
+        maxi = max(maxi,it.second);
     }
+    cout<<n-maxi<<endl;
     
     
 }

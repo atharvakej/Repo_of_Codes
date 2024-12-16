@@ -29,24 +29,31 @@ typedef vector<ll> Vi;
 int32_t main(){
 IOS;
 int t=1;
-cin>>t;
+//cin>>t;
 while(t--){
-    int n,m;
-    cin>>n>>m;
-    vector<int> a(n), b(m);
-    fori(0,n)cin>>a[i];
-    fori(0,m)cin>>b[i];
-    sort(a.begin(),a.end(), greater<int>());
-    sort(b.begin(),b.end(), greater<int>());
-    if(m<=n){
-        int sum = 0;
-        for(auto it:b){
-            sum += it;
+    int n;
+    cin>>n;
+    string a = " I hate ";
+    string b = " I love ";
+    string t = "it";
+    string p = "that";
+    if(n==1)cout<<"I hate it"<<endl;
+    else
+    cout<<"I hate that";
+    for(int i=2;i<=n;i++){
+        if(i%2){
+            cout<<a;
         }
-        cout<<sum<<endl;
-    }
-    else{
-        
+        else{
+            cout<<b;
+        }
+        if(i!=n){
+            cout<<p;
+        }
+        else{
+            cout<<t<<endl;
+            break;
+        }
     }
     
     

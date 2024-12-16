@@ -31,21 +31,11 @@ IOS;
 int t=1;
 cin>>t;
 while(t--){
-    int n,m;
-    cin>>n>>m;
-    vector<int> a(n), b(m);
-    fori(0,n)cin>>a[i];
-    fori(0,m)cin>>b[i];
-    sort(a.begin(),a.end(), greater<int>());
-    sort(b.begin(),b.end(), greater<int>());
-    if(m<=n){
-        int sum = 0;
-        for(auto it:b){
-            sum += it;
-        }
-        cout<<sum<<endl;
-    }
-    else{
+    int k, l1,r1,l2,r2;
+    cin>>k>>l1>>r1>>l2>>r2;
+
+    for(int i=0;i<32;i++){
+        int val = pow(k,i);
         
     }
     

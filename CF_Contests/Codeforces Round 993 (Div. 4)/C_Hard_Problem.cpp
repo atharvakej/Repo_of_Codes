@@ -31,23 +31,43 @@ IOS;
 int t=1;
 cin>>t;
 while(t--){
-    int n,m;
-    cin>>n>>m;
-    vector<int> a(n), b(m);
-    fori(0,n)cin>>a[i];
-    fori(0,m)cin>>b[i];
-    sort(a.begin(),a.end(), greater<int>());
-    sort(b.begin(),b.end(), greater<int>());
-    if(m<=n){
-        int sum = 0;
-        for(auto it:b){
-            sum += it;
-        }
-        cout<<sum<<endl;
+    int m,a,b,c;
+    cin>>m>>a>>b>>c;
+    int ans = 0;
+    if(a>=m){
+        ans += m;
     }
     else{
-        
+        int extra = m-a;
+        if(c>=extra){
+        //cout<<"a";
+            ans += a;
+            ans += extra;
+            c -= extra;
+        }
+        else{
+            ans += a+c;
+            c=0;
+        }
     }
+   // cout<<ans<<endl;
+    if(b>=m){
+        ans += m;
+    }
+    else{
+        int extra = m-b;
+        if(c>=extra){
+            ans += b;
+            ans += extra;
+            c -= extra;
+        }
+        else{
+            ans += b+c;
+            c=0;
+        }
+    }
+    cout<<ans<<endl;
+    
     
     
 }

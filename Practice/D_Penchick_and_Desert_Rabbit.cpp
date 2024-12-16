@@ -29,26 +29,11 @@ typedef vector<ll> Vi;
 int32_t main(){
 IOS;
 int t=1;
-cin>>t;
+//cin>>t;
 while(t--){
-    int n,m;
-    cin>>n>>m;
-    vector<int> a(n), b(m);
-    fori(0,n)cin>>a[i];
-    fori(0,m)cin>>b[i];
-    sort(a.begin(),a.end(), greater<int>());
-    sort(b.begin(),b.end(), greater<int>());
-    if(m<=n){
-        int sum = 0;
-        for(auto it:b){
-            sum += it;
-        }
-        cout<<sum<<endl;
+    for(int i=1;i<30;i++){
+        cout<<i<<" "<<__builtin_popcount(i)<<endl;
     }
-    else{
-        
-    }
-    
     
 }
     return 0;

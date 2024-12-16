@@ -31,23 +31,9 @@ IOS;
 int t=1;
 cin>>t;
 while(t--){
-    int n,m;
-    cin>>n>>m;
-    vector<int> a(n), b(m);
-    fori(0,n)cin>>a[i];
-    fori(0,m)cin>>b[i];
-    sort(a.begin(),a.end(), greater<int>());
-    sort(b.begin(),b.end(), greater<int>());
-    if(m<=n){
-        int sum = 0;
-        for(auto it:b){
-            sum += it;
-        }
-        cout<<sum<<endl;
-    }
-    else{
-        
-    }
+    int x,y;
+    cin>>x>>y;
+    cout<<max(x,y)+(max(min(x,y),max(x,y)-1))<<endl;
     
     
 }

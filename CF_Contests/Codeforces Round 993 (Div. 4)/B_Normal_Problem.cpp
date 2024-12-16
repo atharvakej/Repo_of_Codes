@@ -31,23 +31,14 @@ IOS;
 int t=1;
 cin>>t;
 while(t--){
-    int n,m;
-    cin>>n>>m;
-    vector<int> a(n), b(m);
-    fori(0,n)cin>>a[i];
-    fori(0,m)cin>>b[i];
-    sort(a.begin(),a.end(), greater<int>());
-    sort(b.begin(),b.end(), greater<int>());
-    if(m<=n){
-        int sum = 0;
-        for(auto it:b){
-            sum += it;
-        }
-        cout<<sum<<endl;
+    string s;
+    cin>>s;
+    for(int i=0;i<s.size();i++){
+        if(s[i]=='q')s[i]='p';
+        else if(s[i]=='p')s[i]='q';
     }
-    else{
-        
-    }
+    reverse(s.begin(),s.end());
+    cout<<s<<endl;
     
     
 }
