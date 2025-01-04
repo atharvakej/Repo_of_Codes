@@ -29,20 +29,14 @@ typedef vector<ll> Vi;
 int32_t main(){
 IOS;
 int t=1;
-//cin>>t;
+cin>>t;
 while(t--){
-    int n;
-    cin>>n;
-    map<char,int> mp;
-    string s;
-    cin>>s;
-    for(auto it:s){
-        mp[tolower(it)]++;
-    }
-    if(mp.size()==26){
-        cout<<"YES"<<endl;
-    }
-    else cout<<"NO"<<endl;
+    int l,r,g;
+    cin>>l>>r>>g;
+
+    int last = (r/g) * g;
+    int first = ((l+g-1)/g)*g;
+    cout<<first<<" "<<last<<endl;
     
     
 }

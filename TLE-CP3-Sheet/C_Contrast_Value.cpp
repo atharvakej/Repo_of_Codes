@@ -32,48 +32,18 @@ int t=1;
 cin>>t;
 while(t--){
     int n;
-    char light;
-    cin>>n>>light;
+    cin>>n;
+    vector<int> arr(n);
+    fori(0,n)cin>>arr[i];
 
-    string s;
-    cin>>s;
-    vector<int> idx(n);
-    int lastocc = n;
-    for(int i=n-1;i>=0;i--){
-        if(s[i]=='g'){
-            lastocc = i;
-        }
+    int size = 2;
 
-        if(lastocc==n){
-            idx[i] = n;
-        }
-        else idx[i] = lastocc-i;
-    }
-    // for(auto it:idx){
-    //     cout<<it<<' ';
-    // }
-    // cout<<endl;
-    int focc = n;
-    for(int i=0;i<n;i++){
-        if(s[i]=='g'){
-            focc = i;
-            break;
+    for(int i=1;i<n-1;i++){
+        if((arr[i+1]-arr[i])*(arr[i]-arr[i-1])<0){
+            size++;
         }
     }
-    for(int i=0;i<n;i++){
-        if(idx[i]==n){
-            idx[i] = n - i + focc;
-        }
-    }
-
-    int maxi = 0;
-    for(int i=0;i<n;i++){
-        if(s[i]==light){
-            maxi = max(idx[i],maxi);
-        }
-    }
-    cout<<maxi<<endl;
-
+    cout<<size<<endl;
     
     
 }

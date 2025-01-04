@@ -26,6 +26,13 @@ typedef vector<ll> Vi;
 #define sorta(x) sort(x.begin(),x.end())
 #define fora(x) for(auto it : x)
 #define int long long
+
+int log_a_to_base_b(int a, int b)
+{
+    return log2(a) / log2(b);
+}
+
+
 int32_t main(){
 IOS;
 int t=1;
@@ -33,49 +40,17 @@ cin>>t;
 while(t--){
     int n;
     cin>>n;
-    string s;
-    cin>>s;
-    
-
-
-    //cout<<s<<endl;
-    
-    bool pscheck = 0;
-    char last = ' ';
-    for(int i=0;i<n;i++){
-        if(s[i]!='.'){
-            last = s[i];
-            break;
-        }
-    }
-    if(last==' '){
-        cout<<"YES"<<endl;
+    int height = 0;
+    if(n<4){
+        cout<<1<<endl;
         continue;
     }
-    for(int i=0;i<n;i++){
-        if(s[i]!='.' && s[i]!=last){
-            if(s[i]=='s' && last =='p'){
-                pscheck = 1;
-                break;
-            }
-            else{
-                last = s[i];
-            }
-        }
+    while(n>3){
+        height++;
+        n= n/4;
     }
-    if(pscheck)cout<<"NO"<<endl;
-    else{
-        map<char,int> mp;
-        for(int i=1;i<n-1;i++){
-            if(s[i]!='.')
-            mp[s[i]]++;
-        }
-        if(mp.size()<=1) cout<<"YES"<<endl;
-        else cout<<"NO"<<endl;
-    }
-
-
     
+    cout<<(2LL<<(height-1))<<endl;
     
     
 }
