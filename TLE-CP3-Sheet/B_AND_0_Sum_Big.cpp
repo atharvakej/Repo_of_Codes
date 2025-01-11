@@ -7,37 +7,30 @@ using namespace std;
 #define MP make_pair
 #define pb     push_back
 #define ppb    pop_back
+#define int long long
+int mod = 1e9+7;
 int power(int a, int b){
 int r=1; 
 while(b){
-if(b&1)r=(r*a);
-a=(a*a); b/=2;
+if(b&1)r=(r%mod *a%mod)%mod;
+a=(a%mod*a%mod)%mod; b/=2;
 }
 return r;
 }
-    
-typedef long long int ll;
-typedef pair<ll,ll> pll;
-typedef map<ll , ll > mll;
-typedef vector<ll> Vi;
+
 #define IOS ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define fori(e,x) for(ll i=e; i<x; i++)
 #define forj(x) for(ll j=0; j<x; j++)
 #define sorta(x) sort(x.begin(),x.end())
 #define fora(x) for(auto it : x)
-#define int long long
 int32_t main(){
 IOS;
 int t=1;
-//cin>>t;
+cin>>t;
 while(t--){
-    for(int i=5;i<=21;i++){
-        for(int j=i+1;j<=21;j++){
-            for(int k=j+1;k<=21;k++){
-                cout<<i<<" "<<j<<" "<<k<<" "<<(i^j)+(j^k)+(k^i)<<endl;
-            }
-        }
-    }
+    int n,k;
+    cin>>n>>k;
+    cout<<power(n,k)<<endl;
     
     
 }

@@ -30,58 +30,38 @@ int32_t main(){
 IOS;
 int t=1;
 cin>>t;
-for(int p=1;p<=t;p++){
+while(t--){
     int n;
     cin>>n;
     vector<int> arr(n);
     fori(0,n)cin>>arr[i];
-    bool flag = 1;
-    for(int i=0;i<n;i++){
-        if(arr[i]==arr[0]){
 
-        }
-        else{
-            flag = 0;
-            break;
+
+    int count = 0;
+    int diff = -1;
+    for(int i=1;i<n;i++){
+        if(arr[0]!=arr[i]){
+            diff = i+1;
+            count++;
         }
     }
-    if(flag){
-        cout<<1<<endl;
+    if(count==0){
+        cout<<"NO"<<endl;
         continue;
     }
-
-
-    vector<int> a;
-    a.push_back(arr[0]);
-    fori(1,n){
-        if(arr[i]==a.back() || arr[i]==0){
-            continue;
-        }
-        else a.push_back(arr[i]);
-    }
-    // for(auto it:a){
-    //     cout<<it<<" ";
-    // }
-    // cout<<endl;
-    int ans = 1;
-    for(int i=1;i<a.size()-1;i++){
-        if((a[i+1]-a[i])*(a[i]-a[i-1])<0){
-           // cout<<i<<" ";
-            ans +=2;
+    else cout<<"YES"<<endl;
+    int i=0;
+    for(int i=1;i<n;i++){
+        if(arr[0]!=arr[i]){
+            cout<<1<<" "<<i+1<<endl;
         }
     }
-    //cout<<endl;
-    // if(p==102){
-    //     for(auto it:arr){
-    //         cout<<it<<" ";
-    //     }
-    //     cout<<endl;
-    // }
-    if(ans==1 && flag==0){
-        cout<<ans+1<<endl;
+    for(int i=1;i<n;i++){
+        if(arr[i]==arr[0]){
+            cout<<diff<<" "<<i+1<<endl;
+        }
     }
-    else
-    cout<<ans<<endl;
+    
     
 }
     return 0;

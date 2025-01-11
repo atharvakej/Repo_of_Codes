@@ -31,34 +31,41 @@ IOS;
 int t=1;
 cin>>t;
 while(t--){
-    int n,k;
-    cin>>n>>k;
-    vector<int> arr(n);
-    fori(0,n)cin>>arr[i];
-
-    map<int,int> mp;
-    for(auto it:arr){
-        mp[it]++;
-    }
-    vector<int> freq;
-    for(auto it:mp){
-        freq.push_back(it.second);
-    }
-
-    sort(freq.begin(),freq.end());
-    int maxi = freq.back();
-
-    int count = 1;
-    for(int i=0;i<freq.size()-1;i++){
-        if(k>=freq[i]){
-            k -= freq[i];
-            continue;
+    int n;
+    cin>>n;
+    string s,t;
+    cin>>s>>t;
+    int one = 0;
+    int zero = 0;
+    bool flag = 1;
+    vector<pair<int,int>> count(n);
+    vector<int> idxs;
+    for(int i=0;i<n-1;i++){
+        if( (s[i]!=t[i] && s[i+1]==t[i+1])
+        || (s[i]==t[i] && s[i+1]!=t[i+1])){
+            idxs.push_back(i);
         }
-        else{
-            count++;
+        one += s[i]=='1';
+        zero += s[i]=='0';
+        count[i] = {zero,one};
+    }
+    one += s[n-1]=='1';
+    zero += s[n-1]=='0';
+    count[n-1] = {zero,one};
+    if(s[n-1]!=t[n-1]){
+        idxs.push_back(n-1);
+    }
+    //cout<<idxs[0]<<endl;
+    for(auto it:idxs){
+        if(count[it].first!=count[it].second){
+            flag =0;
+            break;
         }
     }
-    cout<<count<<endl;
+    if(flag)cout<<"YES"<<endl;
+    else cout<<"NO"<<endl;
+    
+
     
     
 }

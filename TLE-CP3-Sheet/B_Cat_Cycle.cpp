@@ -33,32 +33,11 @@ cin>>t;
 while(t--){
     int n,k;
     cin>>n>>k;
-    vector<int> arr(n);
-    fori(0,n)cin>>arr[i];
-
-    map<int,int> mp;
-    for(auto it:arr){
-        mp[it]++;
+    k--;
+    if(n&1){
+        cout<<(k+(k/(n/2)))%n + 1<<endl;
     }
-    vector<int> freq;
-    for(auto it:mp){
-        freq.push_back(it.second);
-    }
-
-    sort(freq.begin(),freq.end());
-    int maxi = freq.back();
-
-    int count = 1;
-    for(int i=0;i<freq.size()-1;i++){
-        if(k>=freq[i]){
-            k -= freq[i];
-            continue;
-        }
-        else{
-            count++;
-        }
-    }
-    cout<<count<<endl;
+    else cout<<(k)%n +1 <<endl;
     
     
 }

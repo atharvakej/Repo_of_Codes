@@ -29,36 +29,12 @@ typedef vector<ll> Vi;
 int32_t main(){
 IOS;
 int t=1;
-cin>>t;
+//cin>>t;
 while(t--){
-    int n,k;
-    cin>>n>>k;
-    vector<int> arr(n);
-    fori(0,n)cin>>arr[i];
-
-    map<int,int> mp;
-    for(auto it:arr){
-        mp[it]++;
-    }
-    vector<int> freq;
-    for(auto it:mp){
-        freq.push_back(it.second);
-    }
-
-    sort(freq.begin(),freq.end());
-    int maxi = freq.back();
-
-    int count = 1;
-    for(int i=0;i<freq.size()-1;i++){
-        if(k>=freq[i]){
-            k -= freq[i];
-            continue;
-        }
-        else{
-            count++;
-        }
-    }
-    cout<<count<<endl;
+    vector<int> arr(4);
+    fori(0,4)cin>>arr[i];
+    sort(arr.begin(),arr.end());
+    cout<<arr.back()-arr[0]<<" "<<arr[3]-arr[1]<<" "<<arr[3]-arr[2]<<endl;
     
     
 }

@@ -31,34 +31,42 @@ IOS;
 int t=1;
 cin>>t;
 while(t--){
-    int n,k;
-    cin>>n>>k;
-    vector<int> arr(n);
-    fori(0,n)cin>>arr[i];
-
-    map<int,int> mp;
-    for(auto it:arr){
-        mp[it]++;
-    }
-    vector<int> freq;
-    for(auto it:mp){
-        freq.push_back(it.second);
-    }
-
-    sort(freq.begin(),freq.end());
-    int maxi = freq.back();
-
-    int count = 1;
-    for(int i=0;i<freq.size()-1;i++){
-        if(k>=freq[i]){
-            k -= freq[i];
-            continue;
+    int n;
+    cin>>n;
+    string s;
+    cin>>s;
+    int mini = 1e9;
+    for(char c ='a';c<='z';c++){
+        int count = 0;
+        bool flag = 1;
+        int i= 0;
+        int j= n-1;
+        while(i<=j){
+            if(s[i]==s[j]){
+                i++;
+                j--;
+            }
+            else if(s[i]==c){
+                count++;
+                i++;
+            }
+            else if(s[j]==c){
+                j--;
+                count++;
+            }
+            else{
+                flag = 0;
+                break;
+            }
         }
-        else{
-            count++;
-        }
+        if(flag)
+        mini = min(mini,count);
     }
-    cout<<count<<endl;
+    if(mini==1e9){
+        cout<<-1<<endl;
+    }
+    else
+    cout<<mini<<endl;
     
     
 }

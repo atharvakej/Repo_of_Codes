@@ -15,7 +15,9 @@ a=(a*a); b/=2;
 }
 return r;
 }
-    
+
+
+
 typedef long long int ll;
 typedef pair<ll,ll> pll;
 typedef map<ll , ll > mll;
@@ -26,39 +28,41 @@ typedef vector<ll> Vi;
 #define sorta(x) sort(x.begin(),x.end())
 #define fora(x) for(auto it : x)
 #define int long long
+
+
 int32_t main(){
 IOS;
 int t=1;
 cin>>t;
 while(t--){
-    int n,k;
-    cin>>n>>k;
-    vector<int> arr(n);
-    fori(0,n)cin>>arr[i];
-
+    int n;
+    cin>>n;
+    string s;
+    cin>>s;
     map<int,int> mp;
-    for(auto it:arr){
-        mp[it]++;
+    for(int i=0;i<n;i++){
+        if(s[i]=='0'){
+            mp[i+1]++;
+        }
     }
-    vector<int> freq;
+    int score = 0;
+    set<int> st;
     for(auto it:mp){
-        freq.push_back(it.second);
+        // mp[it.first] = 0;
+       for(int i=it.first;i<=n;i+=it.first){
+            if(mp.find(i)!=mp.end()){
+                //mp[i] = 0;
+                //cout<<i<<" "<<it.first<<endl;
+                if(st.find(i)==st.end()){
+                score += it.first;
+                st.insert(i);
+                }
+            }
+            else break;
+       }
     }
+    cout<<score<<endl;
 
-    sort(freq.begin(),freq.end());
-    int maxi = freq.back();
-
-    int count = 1;
-    for(int i=0;i<freq.size()-1;i++){
-        if(k>=freq[i]){
-            k -= freq[i];
-            continue;
-        }
-        else{
-            count++;
-        }
-    }
-    cout<<count<<endl;
     
     
 }

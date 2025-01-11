@@ -26,37 +26,34 @@ typedef vector<ll> Vi;
 #define sorta(x) sort(x.begin(),x.end())
 #define fora(x) for(auto it : x)
 #define int long long
+
+
+
+
 int32_t main(){
 IOS;
 int t=1;
 cin>>t;
 while(t--){
-    int n,k;
-    cin>>n>>k;
+    int n,x;
+    cin>>n>>x;
     vector<int> arr(n);
     fori(0,n)cin>>arr[i];
 
-    map<int,int> mp;
-    for(auto it:arr){
-        mp[it]++;
+    sort(arr.begin(), arr.end());
+    for(int i=1;i<n;i++){
+        arr[i] = arr[i-1] + arr[i];
     }
-    vector<int> freq;
-    for(auto it:mp){
-        freq.push_back(it.second);
-    }
-
-    sort(freq.begin(),freq.end());
-    int maxi = freq.back();
-
-    int count = 1;
-    for(int i=0;i<freq.size()-1;i++){
-        if(k>=freq[i]){
-            k -= freq[i];
-            continue;
+    int count = 0;
+    int days = -1;
+    for(int i=n-1;i>=0;i--){
+        int today = (x-arr[i])/(i+1);
+        if((x-arr[i])<0){
+            today = -1;
         }
-        else{
-            count++;
-        }
+        cout<<today<<" "<<days<<endl;
+        count += (i+1)*(today-days);
+        days = today;
     }
     cout<<count<<endl;
     
