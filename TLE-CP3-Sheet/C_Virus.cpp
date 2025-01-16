@@ -31,30 +31,30 @@ IOS;
 int t=1;
 cin>>t;
 while(t--){
-    int n;
-    cin >> n;
-    vector<int> a(n);
-    map<int, int> cnt;
-    set<int> b;
-    for (int i = 0; i < n; ++i) {
-        cin >> a[i];
-        cnt[a[i]]++;
-        b.insert(a[i]);
-        b.insert(a[i] + 1);
+    int n,m;
+    cin>>n>>m;
+    vector<int> arr(m);
+    fori(0,m)cin>>arr[i];
+    sort(arr.begin(),arr.end());
+    multiset<int> ms;
+    int prev = arr[0];
+    for(int i=1;i<m;i++){
+        ms.insert(-(arr[i]-prev-1));
+        prev = arr[i];
     }
-    // for(auto it:b){
-    //     cout<<it<<" ";
-    // }
-    // cout<<endl;
-    int last = 0;
-    int res = 0;
-    for (auto x: b) {
-        int c = cnt[x];
-        res += max(0LL, c - last);
-        last = c;
+    ms.insert(-(arr[0] + (n-arr.back()) - 1));
+    int start = 0;
+    int saved = 0;
+    for(auto it:ms){
+        //cout<<it<<endl;
+        if((abs(it)-2*start)>0)
+        saved += max(1LL,abs(it)-1-2*start);
+        //cout<<saved<<endl;
+        start +=2;
     }
-    cout << res << '\n';
-    
+    cout<<n-saved<<endl;
+
+
     
     
 }

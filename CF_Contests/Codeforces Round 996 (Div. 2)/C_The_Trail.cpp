@@ -31,31 +31,42 @@ IOS;
 int t=1;
 cin>>t;
 while(t--){
-    int n;
-    cin >> n;
-    vector<int> a(n);
-    map<int, int> cnt;
-    set<int> b;
-    for (int i = 0; i < n; ++i) {
-        cin >> a[i];
-        cnt[a[i]]++;
-        b.insert(a[i]);
-        b.insert(a[i] + 1);
+    int n,m;
+    cin>>n>>m;
+    string s;
+    cin>>s;
+    vector<vector<int>> arr(n,vector<int>(m,0));
+    fori(0,n){
+        for(int j=0;j<m;j++){
+            cin>>arr[i][j];
+        }
     }
-    // for(auto it:b){
-    //     cout<<it<<" ";
-    // }
-    // cout<<endl;
-    int last = 0;
-    int res = 0;
-    for (auto x: b) {
-        int c = cnt[x];
-        res += max(0LL, c - last);
-        last = c;
+    int x = 0;
+    int y = 0;
+    for(auto it:s){
+        if(it=='D'){
+        arr[x][y] = 1e18;
+            x++;    
+        }
+        else{
+            arr[x][y] = 1e18;
+            y++;
+        }
     }
-    cout << res << '\n';
-    
-    
+    arr[n-1][m-1] = 1e18;
+    for(auto it:arr){
+        for(auto i:it){
+            cout<<i<<' ';
+        }
+        cout<<endl;
+    }
+    cout<<endl;
+    map<int,vector<pair<int,int>>> mp;
+
+    for(int i=0;i<n;i++){{
+        for(int )
+    }
+
     
 }
     return 0;

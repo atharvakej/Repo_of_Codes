@@ -26,35 +26,39 @@ typedef vector<ll> Vi;
 #define sorta(x) sort(x.begin(),x.end())
 #define fora(x) for(auto it : x)
 #define int long long
+
+
+
 int32_t main(){
 IOS;
 int t=1;
 cin>>t;
 while(t--){
-    int n;
-    cin >> n;
-    vector<int> a(n);
-    map<int, int> cnt;
-    set<int> b;
-    for (int i = 0; i < n; ++i) {
-        cin >> a[i];
-        cnt[a[i]]++;
-        b.insert(a[i]);
-        b.insert(a[i] + 1);
+    int n,w;
+    cin>>n>>w;
+
+    map<int,int> mp;
+    for(int i=0;i<n;i++){
+        int x;
+        cin>>x;
+        mp[-x]++;
     }
-    // for(auto it:b){
-    //     cout<<it<<" ";
-    // }
-    // cout<<endl;
-    int last = 0;
-    int res = 0;
-    for (auto x: b) {
-        int c = cnt[x];
-        res += max(0LL, c - last);
-        last = c;
+
+    int width = w;
+    int len = 1;
+    for(int i=0;i<32;i++){
+        for(auto it:mp){
+        int wid = abs(it.first);
+        int possible = w/(wid);
+        width -= possible*wid;
+        if(possible==0){
+            len ++;
+            width = w;
+        }
+
+        }   
     }
-    cout << res << '\n';
-    
+    cout<<len<<endl;
     
     
 }

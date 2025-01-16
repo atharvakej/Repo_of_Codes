@@ -32,29 +32,24 @@ int t=1;
 cin>>t;
 while(t--){
     int n;
-    cin >> n;
-    vector<int> a(n);
-    map<int, int> cnt;
-    set<int> b;
-    for (int i = 0; i < n; ++i) {
-        cin >> a[i];
-        cnt[a[i]]++;
-        b.insert(a[i]);
-        b.insert(a[i] + 1);
+    cin>>n;
+    vector<string> arr(n);
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
     }
-    // for(auto it:b){
-    //     cout<<it<<" ";
-    // }
-    // cout<<endl;
-    int last = 0;
-    int res = 0;
-    for (auto x: b) {
-        int c = cnt[x];
-        res += max(0LL, c - last);
-        last = c;
+    int count = 0;
+    for(int i=0;i<((n)/2);i++){
+        for(int j=i;j<(n-i+1)/2;j++){
+        int ct = 0;
+        ct += arr[i][j]-'0';
+        ct += arr[j][n-1]-'0';
+        ct += arr[n-1][i]-'0';
+        ct += arr[n-1-i][n-1-j]-'0';
+        count += min(ct,4-ct);   
+            
+        }
     }
-    cout << res << '\n';
-    
+    cout<<count<<endl;
     
     
 }

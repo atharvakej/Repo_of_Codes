@@ -31,30 +31,7 @@ IOS;
 int t=1;
 cin>>t;
 while(t--){
-    int n;
-    cin >> n;
-    vector<int> a(n);
-    map<int, int> cnt;
-    set<int> b;
-    for (int i = 0; i < n; ++i) {
-        cin >> a[i];
-        cnt[a[i]]++;
-        b.insert(a[i]);
-        b.insert(a[i] + 1);
-    }
-    // for(auto it:b){
-    //     cout<<it<<" ";
-    // }
-    // cout<<endl;
-    int last = 0;
-    int res = 0;
-    for (auto x: b) {
-        int c = cnt[x];
-        res += max(0LL, c - last);
-        last = c;
-    }
-    cout << res << '\n';
-    
+    int n
     
     
 }

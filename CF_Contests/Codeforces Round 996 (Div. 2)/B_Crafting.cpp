@@ -32,29 +32,31 @@ int t=1;
 cin>>t;
 while(t--){
     int n;
-    cin >> n;
-    vector<int> a(n);
-    map<int, int> cnt;
-    set<int> b;
-    for (int i = 0; i < n; ++i) {
-        cin >> a[i];
-        cnt[a[i]]++;
-        b.insert(a[i]);
-        b.insert(a[i] + 1);
+    cin>>n;
+    vector<int> arr(n),brr(n);
+    fori(0,n)cin>>arr[i];
+    fori(0,n)cin>>brr[i];
+    int maxi = 0;
+    int idx = -1;
+    bool flag = 1;
+    for(int i=0;i<n;i++){
+        if(idx!=-1 && arr[i]<brr[i]){
+            flag =0;
+            break;
+        }
+        else if(arr[i]<brr[i]){
+            maxi = brr[i]-arr[i];
+            idx = i;
+        }
     }
-    // for(auto it:b){
-    //     cout<<it<<" ";
-    // }
-    // cout<<endl;
-    int last = 0;
-    int res = 0;
-    for (auto x: b) {
-        int c = cnt[x];
-        res += max(0LL, c - last);
-        last = c;
+    for(int i=0;i<n;i++){
+        if(i!=idx && (arr[i]-brr[i])<maxi){
+            flag = 0;
+            break;
+        }
     }
-    cout << res << '\n';
-    
+    if(flag)cout<<"YES"<<endl;
+    else cout<<"NO"<<endl;
     
     
 }

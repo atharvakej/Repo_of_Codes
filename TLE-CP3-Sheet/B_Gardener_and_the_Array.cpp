@@ -26,15 +26,46 @@ typedef vector<ll> Vi;
 #define sorta(x) sort(x.begin(),x.end())
 #define fora(x) for(auto it : x)
 #define int long long
+
+void solve(){         
+    ll n; cin>>n;
+    vector<ll> a[n];
+    map<ll,ll> freq;
+    for(ll i=0;i<n;i++){
+        ll k; cin>>k;
+        while(k--){
+            ll x; cin>>x;
+            freq[x]++;
+            a[i].push_back(x);  
+        }
+    }
+    int i=0;
+    for(auto it:a){
+        ll valid=1;
+        for(auto i:it){
+            if(freq[i]==1){
+                valid=0;
+            }
+        }
+        if(valid){
+            //cout<<i<<endl;
+            cout<<"Yes\n";
+            return;
+        }
+        i++;
+    }
+    cout<<"No\n";
+    return;                                  
+}             
+
+
+
 int32_t main(){
 IOS;
 int t=1;
 cin>>t;
 while(t--){
-    int n;
-    cin>>n;
-    
-    
+    solve();
     
 }
     return 0;

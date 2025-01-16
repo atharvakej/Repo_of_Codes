@@ -35,54 +35,23 @@ for(int p=1;p<=t;p++){
     cin>>n;
     vector<int> arr(n);
     fori(0,n)cin>>arr[i];
-    bool flag = 1;
+    vector<int> ans;
     for(int i=0;i<n;i++){
-        if(arr[i]==arr[0]){
-
+        while( (i<n && arr[i]==arr[i+1])){
+            i++;
         }
-        else{
-            flag = 0;
-            break;
-        }
+        ans.push_back(arr[i]);
     }
-    if(flag){
-        cout<<1<<endl;
-        continue;
+    int count = ans.size();
+    int s = ans.size();
+    for(int i=0;i<s-2;i++){
+       // cout<<ans[i]<<" "<<ans[i+1]<<" "<<ans[i+2]<<endl;
+        count -= (ans[i]>ans[i+1] && ans[i+1]>ans[i+2]);
+        count -= (ans[i]<ans[i+1] && ans[i+1]<ans[i+2]);
     }
-
-
-    vector<int> a;
-    a.push_back(arr[0]);
-    fori(1,n){
-        if(arr[i]==a.back() || arr[i]==0){
-            continue;
-        }
-        else a.push_back(arr[i]);
-    }
-    // for(auto it:a){
-    //     cout<<it<<" ";
-    // }
-    // cout<<endl;
-    int ans = 1;
-    for(int i=1;i<a.size()-1;i++){
-        if((a[i+1]-a[i])*(a[i]-a[i-1])<0){
-           // cout<<i<<" ";
-            ans +=2;
-        }
-    }
-    //cout<<endl;
-    // if(p==102){
-    //     for(auto it:arr){
-    //         cout<<it<<" ";
-    //     }
-    //     cout<<endl;
-    // }
-    if(ans==1 && flag==0){
-        cout<<ans+1<<endl;
-    }
-    else
-    cout<<ans<<endl;
+    cout<<count<<endl;
     
+
 }
     return 0;
 }
